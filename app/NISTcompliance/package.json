@@ -1,0 +1,14 @@
+{
+  "name": "nistcompliance",
+  "version": "1.0.0",
+  "description": "nist compliance validation utility",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Stephen Timko",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}

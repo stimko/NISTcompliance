@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>pwned</title>
+  <script type="module">
+    import { buildLookup, valid } from './NISTcompliance';
+
+    let lookup;
+    window.onSubmit = () => {
+      document.getElementById("status").innerHTML = "Validating...";
+      const pw = document.getElementById("password").value;
+      const validationResult = valid(pw, lookup);
+      document.getElementById("status").innerHTML = validationResult.reason ? validationResult.reason : "Valid!";
+    }
+    async function fetchPws() {
+      const response = await fetch("http://localhost:3000/passwords");
+      const passwords = await response.text();
+      lookup = buildLookup(passwords);
+    };
+
+    fetchPws();
+  </script>
+</head>
+
+<body>
+  <h1>NIST Password Validator</h1>
+  <div>
+    Password:
+    <form>
+      <input type="password" id="password" autocomplete="off" autofocus required>
+      <input type="button" value="Check" onclick="onSubmit()">
+      <div id="status"></div>
+    </form>
+  </div>
+</body>
+
+</html>
