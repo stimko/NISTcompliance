@@ -36,9 +36,8 @@ rounded.
 
 ```js
 buildLookup("password\npassw0rd\ntree");
+// output: { password: true, passw0rd: true, tree: true }
 ```
-
-// output: '{password: true, passw0rd: true, tree: true}'
 
 #### validate(password: string, lookup: { string : true } ): { isValid: boolean, reason: string }
 
@@ -61,7 +60,7 @@ Validate that a password is NIST compliant. Returns whether it is valid and a re
 **Example**
 
 ```js
-bytes("password");
+validate("password");
 // output: { isValid: false, reason: 'Passwords must not be common.'}
 ```
 
